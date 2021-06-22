@@ -1,0 +1,43 @@
+@extends('backend.layouts.app')
+
+@section('title', __('$STUDLY_NAME$ Management'))
+
+@section('content')
+    <x-backend.card>
+        <x-slot name="header">
+            @lang('$STUDLY_NAME$ Management')
+        </x-slot>
+
+        <x-slot name="headerActions">
+            <x-utils.link
+                icon="c-icon cil-plus"
+                class="card-header-action"
+                :href="route('admin.$LOWER_NAME$.create')"
+                :text="__('Create $STUDLY_NAME$')"
+            />
+        </x-slot>
+
+        <x-slot name="body">
+            <table id="example" class="display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </x-slot>
+    </x-backend.card>
+    
+   
+@endsection
+@push('after-scripts')
+<script>
+    $(document).ready(function() {        
+        $('#example').DataTable();
+    } );
+</script>
+@endpush
