@@ -77,3 +77,7 @@ Nicolas Widart is a freelance web developer specialising on the Laravel framewor
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+
+## New Note
+
+This package is only for laravel boilerplate.
