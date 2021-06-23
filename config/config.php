@@ -1,6 +1,7 @@
 <?php
 
 use Nwidart\Modules\Activators\FileActivator;
+use Nwidart\Modules\Commands\MakeRepositoryCommand;
 
 return [
 
@@ -196,6 +197,7 @@ return [
         ResourceMakeCommand::class,
         TestMakeCommand::class,
         LaravelModulesV6Migrator::class,
+        MakeRepositoryCommand::class,
     ],
 
     /*
