@@ -104,6 +104,7 @@ class ConsoleServiceProvider extends ServiceProvider
         LaravelModulesV6Migrator::class,
         ComponentClassMakeCommand::class,
         ComponentViewMakeCommand::class,
+        MakeRepositoryCommand::class,
     ];
 
     public function register(): void
