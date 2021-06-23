@@ -83,6 +83,7 @@ class ConsoleServiceProvider extends ServiceProvider
         PolicyMakeCommand::class,
         RequestMakeCommand::class,
         RuleMakeCommand::class,
+        RepositoryMakeCommand::class,
         MigrateCommand::class,
         MigrateRefreshCommand::class,
         MigrateResetCommand::class,
@@ -105,7 +106,6 @@ class ConsoleServiceProvider extends ServiceProvider
         LaravelModulesV6Migrator::class,
         ComponentClassMakeCommand::class,
         ComponentViewMakeCommand::class,
-        RepositoryMakeCommand::class,
     ];
 
     public function register(): void

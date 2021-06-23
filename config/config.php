@@ -176,6 +176,7 @@ return [
         PolicyMakeCommand::class,
         RequestMakeCommand::class,
         RuleMakeCommand::class,
+        RepositoryMakeCommand::class,
         MigrateCommand::class,
         MigrateRefreshCommand::class,
         MigrateResetCommand::class,
@@ -195,7 +196,6 @@ return [
         UseCommand::class,
         ResourceMakeCommand::class,
         TestMakeCommand::class,
-        RepositoryMakeCommand::class,
         LaravelModulesV6Migrator::class,
     ],
 
