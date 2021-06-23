@@ -3,7 +3,7 @@
 @section('title', __('Edit $STUDLY_NAME$'))
 
 @section('content')
-    <x-forms.post :action="route('admin.$LOWER_NAME$.store')">
+    <x-forms.patch :action="route('admin.$LOWER_NAME$.update',$$LOWER_NAME$)">
         <x-backend.card>
             <x-slot name="header">
                 @lang('Create $STUDLY_NAME$')
@@ -19,16 +19,16 @@
                         <label for="name" class="col-md-2 col-form-label">@lang('Name')</label>
 
                         <div class="col-md-10">
-                            <input type="text" name="name" class="form-control" placeholder="{{ __('Name') }}" value="{{ old('name') }}" maxlength="100" required />
+                            <input type="text" name="name" class="form-control" placeholder="{{ __('Name') }}" value="{{ old('name') ?? $$LOWER_NAME$->name }}" maxlength="100" required />
                         </div>
-                    </div>
+                    </div>                    
 
-         
+                    
             </x-slot>
 
             <x-slot name="footer">
                 <button class="btn btn-sm btn-primary float-right" type="submit">@lang('Edit $STUDLY_NAME$')</button>
             </x-slot>
         </x-backend.card>
-    </x-forms.post>
+    </x-forms.patch>
 @endsection

@@ -1,12 +1,12 @@
 @extends('backend.layouts.app')
 
-@section('title', __('Create $LOWER_NAME$'))
+@section('title', __('Create $STUDLY_NAME$'))
 
 @section('content')
     <x-forms.post :action="route('admin.$LOWER_NAME$.store')">
         <x-backend.card>
             <x-slot name="header">
-                @lang('Create $LOWER_NAME$')
+                @lang('Create $STUDLY_NAME$')
             </x-slot>
 
             <x-slot name="headerActions">
@@ -21,13 +21,12 @@
                         <div class="col-md-10">
                             <input type="text" name="name" class="form-control" placeholder="{{ __('Name') }}" value="{{ old('name') }}" maxlength="100" required />
                         </div>
-                    </div>
-
+                    </div>                    
          
             </x-slot>
 
             <x-slot name="footer">
-                <button class="btn btn-sm btn-primary float-right" type="submit">@lang('Create $LOWER_NAME$')</button>
+                <button class="btn btn-sm btn-primary float-right" type="submit">@lang('Create $STUDLY_NAME$')</button>
             </x-slot>
         </x-backend.card>
     </x-forms.post>

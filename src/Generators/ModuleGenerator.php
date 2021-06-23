@@ -399,6 +399,52 @@ class ModuleGenerator extends Generator
                 'module' => $this->getName(),
             ]+$options);
         }
+         /*Start Custom controller*/
+         $this->console->call('module:make-request', [
+            'name' => 'Create'.$this->getName().'Request',
+            'module' => $this->getName(),
+            'permission' => 'create '.$this->getName(),
+        ]);
+
+        $this->console->call('module:make-request', [
+            'name' => 'Manage'.$this->getName().'Request',
+            'module' => $this->getName(),
+            'permission' => 'manage '.$this->getName(),
+        ]);
+
+        $this->console->call('module:make-request', [
+            'name' => 'Update'.$this->getName().'Request',
+            'module' => $this->getName(),
+            'permission' => 'edit '.$this->getName(),
+        ]);
+
+        $this->console->call('module:make-request', [
+            'name' => 'Show'.$this->getName().'Request',
+            'module' => $this->getName(), 
+            'permission' => 'view '.$this->getName(),
+        ]);
+
+        $this->console->call('module:make-controller', [
+            'controller' => $this->getName() . 'TableController',
+            'module' => $this->getName(),
+            '--table' => true
+        ]);
+
+        $this->console->call('module:make-migration', [
+            'name' => 'create_'.strtolower($this->getName()).'_table',
+            'module' => $this->getName(),
+        ]);
+
+        $this->console->call('module:make-model', [
+            '--fillable' => 'id',
+            'model' => $this->getName(),
+            'module' => $this->getName(),
+        ]);
+
+        $this->console->call('module:make-repository', [
+            'name' => $this->getName().'Repository',
+            'module' => $this->getName(),
+        ]);
     }
 
     /**

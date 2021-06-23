@@ -2,6 +2,9 @@
 
 @section('title', __('$STUDLY_NAME$ Management'))
 
+@push('after-styles')
+    {{ style("https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css") }}
+@endpush
 @section('content')
     <x-backend.card>
         <x-slot name="header">
@@ -18,26 +21,55 @@
         </x-slot>
 
         <x-slot name="body">
-            <table id="example" class="display" style="width:100%">
+            <table id="$LOWER_NAME$-table" class="display" style="width:100%">
                 <thead>
                     <tr>
-                        <th>LOL</th>
-                        <th>Description</th>
+                        <th>Name</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                 </tbody>
             </table>
+           
         </x-slot>
     </x-backend.card>
     
    
 @endsection
 @push('after-scripts')
+{{ script("https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js") }}
+
 <script>
-    $(document).ready(function() {        
-        $('#example').DataTable();
-    } );
+    $(function() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $('#$LOWER_NAME$-table').DataTable({
+            processing: true,
+            language:{processing: "<div class='overlay custom-loader-background' style='font-size:2em;'><i class='fa fa-cog fa-spin custom-loader-color'></i></div>"},
+            serverSide: true,
+            ajax: {
+                url: '{!! route("admin.$LOWER_NAME$.get") !!}',
+                type: 'post',
+                error: function (xhr, err) {
+                    if (err === 'parsererror')
+                        location.reload();
+                    else swal(xhr.responseJSON.message);
+                }
+            },
+            columns: [
+                {data: 'name', name: 'name'},            
+                {data: 'actions', name: 'actions', searchable: false, sortable: false}
+            ],
+            order: [[0, "asc"]],
+            searchDelay: 500,
+            fnDrawCallback: function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                load_plugins();
+            }
+        });
+    });
 </script>
 @endpush
