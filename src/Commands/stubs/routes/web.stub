@@ -11,6 +11,14 @@
 |
 */
 
-Route::prefix('admin')->name('admin.')->group(function() {
+Route::group(['middleware' => ['web','admin'], 'as' => 'admin.', 'prefix' => 'admin'], function () 
+{
+    /*
+     * For DataTables
+     */
+    Route::post('$LOWER_NAME$/get', '$STUDLY_NAME$TableController')->name('$LOWER_NAME$.get');
+    /*
+     * User CRUD
+     */
     Route::resource('$LOWER_NAME$', '$STUDLY_NAME$Controller');
 });
