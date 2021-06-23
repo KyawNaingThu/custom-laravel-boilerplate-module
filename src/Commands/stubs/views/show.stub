@@ -19,15 +19,6 @@
                     <td>{{ $$LOWER_NAME$->name }}</td>
                 </tr>                
 
-                <tr>
-                    <th>@lang('Professional Statement')</th>
-                    <td>{{ $$LOWER_NAME$->professional_statement }}</td>
-                </tr>
-
-                <tr>
-                    <th>@lang('Practicing From')</th>
-                    <td>{{ $$LOWER_NAME$->practicing_from }}</td>
-                </tr>
             </table>
         </x-slot>
 

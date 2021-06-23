@@ -2,12 +2,10 @@
 
 namespace $NAMESPACE$;
 
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
 class $CLASS$ extends Model
 {
-    use SoftDeletes;
 	 /**
      * The database table used by the model.
      *
