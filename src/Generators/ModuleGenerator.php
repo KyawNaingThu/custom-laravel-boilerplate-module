@@ -426,11 +426,9 @@ class ModuleGenerator extends Generator
 
         $this->console->call('module:make-controller', [
             'controller' => $this->getName() . 'TableController',
-            'module' => $this->getName(),
-            '--table' => true
-            
-        ]);
-
+            'module' => $this->getName(),                        
+        ]+['--table' => true]);
+        
         $this->console->call('module:make-migration', [
             'name' => 'create_'.strtolower($this->getName()).'_table',
             'module' => $this->getName(),
