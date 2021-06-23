@@ -33,6 +33,7 @@ return [
             'views/index' => 'Resources/views/index.blade.php',
             'views/create' => 'Resources/views/create.blade.php',
             'views/edit' => 'Resources/views/edit.blade.php',
+            'views/master' => 'Resources/views/layouts/master.blade.php',
             'views/show' => 'Resources/views/show.blade.php',
             'scaffold/config' => 'Config/config.php',
             'composer' => 'composer.json',
