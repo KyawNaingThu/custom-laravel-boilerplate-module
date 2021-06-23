@@ -19,7 +19,7 @@ use Nwidart\Modules\Commands\LaravelModulesV6Migrator;
 use Nwidart\Modules\Commands\ListCommand;
 use Nwidart\Modules\Commands\ListenerMakeCommand;
 use Nwidart\Modules\Commands\MailMakeCommand;
-use Nwidart\Modules\Commands\MakeRepositoryCommand;
+use Nwidart\Modules\Commands\RepositoryMakeCommand;
 use Nwidart\Modules\Commands\MiddlewareMakeCommand;
 use Nwidart\Modules\Commands\MigrateCommand;
 use Nwidart\Modules\Commands\MigrateRefreshCommand;
@@ -105,7 +105,7 @@ class ConsoleServiceProvider extends ServiceProvider
         LaravelModulesV6Migrator::class,
         ComponentClassMakeCommand::class,
         ComponentViewMakeCommand::class,
-        MakeRepositoryCommand::class,
+        RepositoryMakeCommand::class,
     ];
 
     public function register(): void
