@@ -427,7 +427,7 @@ class ModuleGenerator extends Generator
         $this->console->call('module:make-controller', [
             'controller' => $this->getName() . 'TableController',
             'module' => $this->getName(),
-            '--table' => true
+            
         ]);
 
         $this->console->call('module:make-migration', [
