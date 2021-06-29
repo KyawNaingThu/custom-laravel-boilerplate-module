@@ -403,25 +403,26 @@ class ModuleGenerator extends Generator
          $this->console->call('module:make-request', [
             'name' => 'Create'.$this->getName().'Request',
             'module' => $this->getName(),
+            'authorize' => 'admin.access.'.strtolower($this->getName()).'.create',
             
         ]);
 
         $this->console->call('module:make-request', [
             'name' => 'Manage'.$this->getName().'Request',
             'module' => $this->getName(),
-            
+            'authorize' => 'admin.access.'.strtolower($this->getName()).'.manage',
         ]);
 
         $this->console->call('module:make-request', [
             'name' => 'Update'.$this->getName().'Request',
             'module' => $this->getName(),
-            
+            'authorize' => 'admin.access.'.strtolower($this->getName()).'.edit',
         ]);
 
         $this->console->call('module:make-request', [
             'name' => 'Show'.$this->getName().'Request',
             'module' => $this->getName(), 
-            
+            'authorize' => 'admin.access.'.strtolower($this->getName()).'.view',
         ]);
 
         $this->console->call('module:make-controller', [

@@ -50,6 +50,7 @@ class RequestMakeCommand extends GeneratorCommand
         return [
             ['name', InputArgument::REQUIRED, 'The name of the form request class.'],
             ['module', InputArgument::OPTIONAL, 'The name of module will be used.'],
+            ['authorize', InputArgument::OPTIONAL, 'The authorize in request will be used.'],
         ];
     }
 
@@ -63,6 +64,7 @@ class RequestMakeCommand extends GeneratorCommand
         return (new Stub('/request.stub', [
             'NAMESPACE' => $this->getClassNamespace($module),
             'CLASS'     => $this->getClass(),
+            'AUTHORIZE' => $this->argument('authorize'),
         ]))->render();
     }
 
