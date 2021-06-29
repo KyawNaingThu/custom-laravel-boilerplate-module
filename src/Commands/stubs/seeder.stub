@@ -20,39 +20,41 @@ class $NAME$ extends Seeder
         Model::unguard();
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
         
-        $$LOWER_NAME$ = Permission::create([
+        $lower_module = strtolower('$MODULE$');
+        
+        $lower_module = Permission::create([
             'type' => User::TYPE_ADMIN,
-            'name' => 'admin.access.$LOWER_NAME$',
-            'description' => 'All $STUDLY_NAME$ Permissions',
+            'name' => 'admin.access.$lower_module',
+            'description' => 'All $MODULE$ Permissions',
         ]);
 
-        $$LOWER_NAME$->children()->saveMany([
+        $lower_module->children()->saveMany([
             new Permission([
                 'type' => User::TYPE_ADMIN,
-                'name' => 'admin.access.$LOWER_NAME$.manage',
-                'description' => 'Manage $STUDLY_NAME$',
+                'name' => 'admin.access.$lower_module.manage',
+                'description' => 'Manage $MODULE$',
             ]),
             new Permission([
                 'type' => User::TYPE_ADMIN,
-                'name' => 'admin.access.$LOWER_NAME$.view',
-                'description' => 'View $STUDLY_NAME$',
+                'name' => 'admin.access.$lower_module.view',
+                'description' => 'View $MODULE$',
             ]),
             new Permission([
                 'type' => User::TYPE_ADMIN,
-                'name' => 'admin.access.$LOWER_NAME$.create',
-                'description' => 'Create $STUDLY_NAME$',
+                'name' => 'admin.access.$lower_module.create',
+                'description' => 'Create $MODULE$',
                 'sort' => 4,
             ]),
             new Permission([
                 'type' => User::TYPE_ADMIN,
-                'name' => 'admin.access.$LOWER_NAME$.edit',
-                'description' => 'Edit $STUDLY_NAME$',
+                'name' => 'admin.access.$lower_module.edit',
+                'description' => 'Edit $MODULE$',
                 'sort' => 5,
             ]),
             new Permission([
                 'type' => User::TYPE_ADMIN,
-                'name' => 'admin.access.$LOWER_NAME$.delete',
-                'description' => 'Delete $STUDLY_NAME$',
+                'name' => 'admin.access.$lower_module.delete',
+                'description' => 'Delete $MODULE$',
                 'sort' => 5,
             ]),
         ]);
