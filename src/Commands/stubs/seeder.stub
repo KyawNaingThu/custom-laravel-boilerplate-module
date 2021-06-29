@@ -4,6 +4,9 @@ namespace $NAMESPACE$;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use App\Domains\Auth\Models\Permission;
+use Spatie\Permission\PermissionRegistrar;
+use App\Domains\Auth\Models\User;
 
 class $NAME$ extends Seeder
 {
@@ -15,7 +18,43 @@ class $NAME$ extends Seeder
     public function run()
     {
         Model::unguard();
+        app()[PermissionRegistrar::class]->forgetCachedPermissions();
+        
+        $$LOWER_NAME$ = Permission::create([
+            'type' => User::TYPE_ADMIN,
+            'name' => 'admin.access.$LOWER_NAME$',
+            'description' => 'All $STUDLY_NAME$ Permissions',
+        ]);
 
-        // $this->call("OthersTableSeeder");
+        $$LOWER_NAME$->children()->saveMany([
+            new Permission([
+                'type' => User::TYPE_ADMIN,
+                'name' => 'admin.access.$LOWER_NAME$.manage',
+                'description' => 'Manage $STUDLY_NAME$',
+            ]),
+            new Permission([
+                'type' => User::TYPE_ADMIN,
+                'name' => 'admin.access.$LOWER_NAME$.view',
+                'description' => 'View $STUDLY_NAME$',
+            ]),
+            new Permission([
+                'type' => User::TYPE_ADMIN,
+                'name' => 'admin.access.$LOWER_NAME$.create',
+                'description' => 'Create $STUDLY_NAME$',
+                'sort' => 4,
+            ]),
+            new Permission([
+                'type' => User::TYPE_ADMIN,
+                'name' => 'admin.access.$LOWER_NAME$.edit',
+                'description' => 'Edit $STUDLY_NAME$',
+                'sort' => 5,
+            ]),
+            new Permission([
+                'type' => User::TYPE_ADMIN,
+                'name' => 'admin.access.$LOWER_NAME$.delete',
+                'description' => 'Delete $STUDLY_NAME$',
+                'sort' => 5,
+            ]),
+        ]);
     }
 }

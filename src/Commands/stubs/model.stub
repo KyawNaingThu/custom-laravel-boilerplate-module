@@ -20,7 +20,7 @@ class $CLASS$ extends Model
      */
     public function getShowButtonAttribute()
     {
-    	if(auth()->user()->can('view $LOWER_NAME$')){
+    	if(auth()->user()->can('admin.access.$LOWER_NAME$.view')){
         	return '<a href="'.route('admin.$LOWER_NAME$.show', $this).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.general.crud.view').'" class="btn btn-info"><i class="fas fa-eye"></i></a>';
         }
        	return '';
@@ -31,7 +31,7 @@ class $CLASS$ extends Model
      */
     public function getEditButtonAttribute()
     {
-    	if(auth()->user()->can('edit $LOWER_NAME$')){
+    	if(auth()->user()->can('admin.access.$LOWER_NAME$.edit')){
         	return '<a href="'.route('admin.$LOWER_NAME$.edit', $this).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.general.crud.edit').'" class="btn btn-primary"><i class="fas fa-edit"></i></a>';
         }
        	return '';
@@ -42,7 +42,7 @@ class $CLASS$ extends Model
      */
     public function getDeleteButtonAttribute()
     {
-        if (auth()->user()->can('delete $LOWER_NAME$')) {
+        if (auth()->user()->can('admin.access.$LOWER_NAME$.delete')) {
             return '<a href="'.route('admin.$LOWER_NAME$.destroy', $this).'" data-method="delete"
                  data-trans-button-cancel="'.__('buttons.general.cancel').'"
                  data-trans-button-confirm="'.__('buttons.general.crud.delete').'"
