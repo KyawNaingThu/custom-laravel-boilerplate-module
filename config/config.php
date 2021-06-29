@@ -70,6 +70,7 @@ return [
                 'MODULE_NAMESPACE',
                 'PROVIDER_NAMESPACE',
             ],
+            'seeder' => ['LOWER_NAME', 'STUDLY_NAME'],
         ],
         'gitkeep' => true,
     ],
