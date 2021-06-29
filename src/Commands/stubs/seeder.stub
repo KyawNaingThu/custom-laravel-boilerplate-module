@@ -22,13 +22,13 @@ class $NAME$ extends Seeder
         
         $lower_module = strtolower('$MODULE$');
         
-        $lower_module = Permission::create([
+        $lower_modulePermission = Permission::create([
             'type' => User::TYPE_ADMIN,
             'name' => "admin.access.$lower_module",
             'description' => 'All $MODULE$ Permissions',
         ]);
 
-        $lower_module->children()->saveMany([
+        $lower_modulePermission->children()->saveMany([
             new Permission([
                 'type' => User::TYPE_ADMIN,
                 'name' => "admin.access.$lower_module.manage",
