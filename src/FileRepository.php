@@ -303,7 +303,48 @@ abstract class FileRepository implements RepositoryInterface, Countable
 
         return $modules;
     }
+     /**
+     * Get all modules with related group as laravel collection instance.
+     *
+     * @param $group
+     *
+     * @return Collection
+     */
+    public function group($group = 0)
+    {
+        return new Collection($this->getBygroup(1, $group));
+    }
+    /**
+     * Get modules by status.
+     *
+     * @param $status
+     *
+     * @return array
+     */
+    public function getBygroup($status, $group, $direction = 'asc')
+    {
+        $modules = [];
 
+        foreach ($this->all() as $name => $module) {
+            if ($module->isStatus($status) && $module->isGroup($group)) {
+                $modules[$name] = $module;
+            }
+        }
+
+        uasort($modules, function (Module $a, Module $b) use ($direction) {
+            if ($a->order == $b->order) {
+                return 0;
+            }
+
+            if ($direction == 'desc') {
+                return $a->order < $b->order ? 1 : -1;
+            }
+
+            return $a->order > $b->order ? 1 : -1;
+        });
+
+        return $modules;
+    }
     /**
      * @inheritDoc
      */
