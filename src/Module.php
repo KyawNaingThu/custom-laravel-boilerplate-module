@@ -163,7 +163,30 @@ abstract class Module
     {
         return $this->path;
     }
+    /**
+     * Get a specific data from json file by given the key.
+     *
+     * @param $key
+     * @param null $default
+     *
+     * @return mixed
+     */
+    public function getGroup($key, $default = null)
+    {
+        return $this->json()->get($key, $default);
+    }
 
+    /**
+     * Determine whether the given status same with the current module status.
+     *
+     * @param $status
+     *
+     * @return bool
+     */
+    public function isGroup($group)
+    {
+        return $this->getGroup('group', 0) === $group;
+    }
     /**
      * Set path.
      *
