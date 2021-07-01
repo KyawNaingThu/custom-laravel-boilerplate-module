@@ -1,5 +1,6 @@
 <?php
 
 return [
-    'name' => '$STUDLY_NAME$'
+    'name' => '$STUDLY_NAME$',
+    'icon' => 'c-sidebar-nav-icon cil-info',
 ];
