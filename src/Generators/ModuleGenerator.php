@@ -399,6 +399,10 @@ class ModuleGenerator extends Generator
                 'module' => $this->getName(),
             ]+$options);
         }
+        $this->console->call('module:make-factory', [
+            'name' => $this->getName(),
+            'module' => $this->getName(),            
+        ]);
          /*Start Custom controller*/
          $this->console->call('module:make-request', [
             'name' => 'Create'.$this->getName().'Request',

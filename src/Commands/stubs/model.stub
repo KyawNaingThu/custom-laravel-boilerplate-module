@@ -14,7 +14,15 @@ class $CLASS$ extends Model
     protected $table = '$LOWER_NAME$';
 
     protected $fillable = $FILLABLE$;
-
+    /**
+     * Create a new factory instance for the model.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    protected static function newFactory()
+    {
+        return \Modules\$STUDLY_NAME$\Database\Factories\$STUDLY_NAME$Factory::new();
+    }
        /**
      * @return string
      */
