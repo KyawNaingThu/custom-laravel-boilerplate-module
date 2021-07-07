@@ -6,7 +6,7 @@
     <x-forms.patch :action="route('admin.$LOWER_NAME$.update',$$LOWER_NAME$)">
         <x-backend.card>
             <x-slot name="header">
-                @lang('Create $STUDLY_NAME$')
+                @lang('Edit $STUDLY_NAME$')
             </x-slot>
 
             <x-slot name="headerActions">
